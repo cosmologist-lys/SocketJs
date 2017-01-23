@@ -39,6 +39,7 @@ function serveStatic(response, cache, absPath) {
 }
 var server = http.createServer(function(request, response) {　　//创建HTTP服务器，用匿名函数定义对每个请求的处理行为
     var filePath = false;
+    console.log(request.url);
     if (request.url == '/') {
         filePath = 'public/index.html';  //确定返回的默认HTML文件
     } else {
@@ -51,4 +52,5 @@ var server = http.createServer(function(request, response) {　　//创建HTTP�
 server.listen(3000,function() {
     console.log('server listening on port:3000 ');
 });
-
+var chatServer = require('./lib/chat_server');
+chatServer.listen(server);
